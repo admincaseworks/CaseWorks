@@ -33,8 +33,8 @@ const chrome = (
   </div>
 );
 const eyebrow: CSSProperties = { fontFamily: "'IBM Plex Mono'", fontSize: 12, letterSpacing: '.14em', textTransform: 'uppercase', color: BLUE, marginBottom: 14 };
-const h2: CSSProperties = { fontFamily: "'Space Grotesk'", fontWeight: 600, fontSize: 'clamp(26px,5vw,38px)', lineHeight: 1.1, letterSpacing: '-.02em', margin: 0, color: '#f2f6ff' };
-const h3mod: CSSProperties = { fontFamily: "'Space Grotesk'", fontWeight: 600, fontSize: 26, color: '#f2f6ff', margin: 0 };
+const h2: CSSProperties = { fontFamily: "'Inter'", fontWeight: 700, fontSize: 'clamp(26px,5vw,38px)', lineHeight: 1.1, letterSpacing: '-.02em', margin: 0, color: '#f2f6ff' };
+const h3mod: CSSProperties = { fontFamily: "'Inter'", fontWeight: 700, fontSize: 26, color: '#f2f6ff', margin: 0 };
 const modP: CSSProperties = { fontSize: 16, color: '#98a8c0', lineHeight: 1.6, margin: '12px 0 22px' };
 const kpiLabel: CSSProperties = { fontFamily: "'IBM Plex Mono'", fontSize: 7.5, letterSpacing: '.04em', color: '#8b98ab', textTransform: 'uppercase' };
 
@@ -103,7 +103,7 @@ function ImplantacaoMock() {
           { v: '46/120', c: ORANGE, l: 'Em obra ativa' },
         ].map((k) => (
           <div key={k.l} style={{ background: '#fff', border: '1px solid #e6e9ef', borderRadius: 10, padding: 12 }}>
-            <div style={{ fontFamily: "'Space Grotesk'", fontWeight: 700, fontSize: 22, color: k.c }}>{k.v}</div>
+            <div style={{ fontFamily: "'Inter'", fontWeight: 700, fontSize: 22, color: k.c }}>{k.v}</div>
             <div style={{ fontSize: 11, color: '#7a8699', marginTop: 2 }}>{k.l}</div>
           </div>
         ))}
@@ -155,7 +155,7 @@ function DiarioMock() {
       {diario.map((d) => (
         <div key={d.day} style={{ background: '#fff', border: '1px solid #e6e9ef', borderRadius: 10, padding: 13, marginBottom: 10, display: 'flex', alignItems: 'center', gap: 13 }}>
           <div style={{ textAlign: 'center', flex: 'none' }}>
-            <div style={{ fontFamily: "'Space Grotesk'", fontWeight: 700, fontSize: 16, color: '#1a2233' }}>{d.day}</div>
+            <div style={{ fontFamily: "'Inter'", fontWeight: 700, fontSize: 16, color: '#1a2233' }}>{d.day}</div>
             <div style={{ fontFamily: "'IBM Plex Mono'", fontSize: 8.5, color: '#8b98ab' }}>{d.mon}</div>
           </div>
           <div style={{ flex: 1 }}>
@@ -196,7 +196,7 @@ function FinMock() {
         {kpis.map((k) => (
           <div key={k.l} style={{ background: '#fff', border: '1px solid #e6e9ef', borderRadius: 10, padding: 10 }}>
             <div style={kpiLabel}>{k.l}</div>
-            <div style={{ fontFamily: "'Space Grotesk'", fontWeight: 700, fontSize: 15, color: k.c, marginTop: 3 }}>{k.v}</div>
+            <div style={{ fontFamily: "'Inter'", fontWeight: 700, fontSize: 15, color: k.c, marginTop: 3 }}>{k.v}</div>
           </div>
         ))}
       </div>
@@ -253,7 +253,7 @@ export default function Page() {
         <div className="cw-nav" style={{ maxWidth: 1200, margin: '0 auto', padding: '14px 28px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 24 }}>
           <a href="#top" style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
             <Logo />
-            <span style={{ fontFamily: "'Space Grotesk'", fontWeight: 600, fontSize: 19, color: '#fff' }}>Case<span style={{ color: BLUE }}>Works</span></span>
+            <span style={{ fontFamily: "'Inter'", fontWeight: 600, fontSize: 19, color: '#fff' }}>Case<span style={{ color: BLUE }}>Works</span></span>
           </a>
           <nav className="cw-navlinks" style={{ display: 'flex', alignItems: 'center', gap: 30, fontFamily: "'IBM Plex Mono'", fontSize: 12, letterSpacing: '.06em', textTransform: 'uppercase', color: '#93a4bd' }}>
             <a href="#modulos" style={{ color: '#93a4bd' }}>Módulos</a>
@@ -261,8 +261,8 @@ export default function Page() {
             <a href="#lancamento" style={{ color: '#93a4bd' }}>Lançamento</a>
           </nav>
           <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
-            <a href="#top" style={{ padding: '9px 16px', border: '1px solid #26344b', borderRadius: 9, color: '#cdd8ea', fontWeight: 500, fontSize: 14 }}>Entrar</a>
-            <a href="#lancamento" style={{ padding: '9px 18px', background: ORANGE, borderRadius: 9, color: '#1a1205', fontWeight: 600, fontSize: 14 }}>Lista de espera</a>
+            <a href="#lancamento" style={{ padding: '10px 18px', background: ORANGE, borderRadius: 10, color: '#1a1205', fontWeight: 600, fontSize: 14, boxShadow: '0 6px 18px rgba(240,129,12,.24)' }}>Entrar na lista de espera</a>
+            <a href="#lancamento" style={{ padding: '10px 18px', border: '1px solid #33455f', borderRadius: 10, color: '#dbe5f3', fontWeight: 600, fontSize: 14, background: 'rgba(255,255,255,.02)' }}>Agendar reunião</a>
           </div>
         </div>
       </header>
@@ -276,7 +276,7 @@ export default function Page() {
             <div style={{ display: 'inline-flex', alignItems: 'center', gap: 8, padding: '6px 13px', border: '1px solid #26344b', borderRadius: 30, background: 'rgba(47,107,255,.08)', fontFamily: "'IBM Plex Mono'", fontSize: 11.5, letterSpacing: '.07em', textTransform: 'uppercase', color: '#8fb0ff' }}>
               <span style={{ width: 7, height: 7, borderRadius: '50%', background: ORANGE, boxShadow: '0 0 0 4px rgba(240,129,12,.18)' }} />Em breve · acesso antecipado 2026
             </div>
-            <h1 style={{ fontFamily: "'Space Grotesk'", fontWeight: 600, fontSize: 'clamp(32px,6.5vw,53px)', lineHeight: 1.05, letterSpacing: '-.02em', margin: '22px 0 0', color: '#f4f8ff', textWrap: 'balance' as CSSProperties['textWrap'] }}>Toda a obra, do canteiro ao caixa, num só sistema.</h1>
+            <h1 style={{ fontFamily: "'Inter'", fontWeight: 700, fontSize: 'clamp(32px,6.5vw,53px)', lineHeight: 1.05, letterSpacing: '-.02em', margin: '22px 0 0', color: '#f4f8ff', textWrap: 'balance' as CSSProperties['textWrap'] }}>Toda a obra, do canteiro ao caixa, num só sistema.</h1>
             <p style={{ fontSize: 18.5, lineHeight: 1.6, color: '#a3b3cc', margin: '20px 0 0', maxWidth: 520 }}>CaseWorks reúne planejamento, diário de obra, suprimentos e financeiro para que engenheiros, gestores e equipes de campo trabalhem sobre a mesma informação, em tempo real.</p>
             <div style={{ display: 'flex', gap: 14, marginTop: 32, flexWrap: 'wrap' }}>
               <a href="#lancamento" style={{ padding: '15px 26px', background: ORANGE, borderRadius: 11, color: '#1a1205', fontWeight: 600, fontSize: 15.5, boxShadow: '0 8px 24px rgba(240,129,12,.28)' }}>Entrar na lista de espera</a>
@@ -295,23 +295,23 @@ export default function Page() {
               <div style={{ background: '#f4f6f9', padding: 16 }}>
                 <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 13 }}>
                   <div style={{ display: 'flex', alignItems: 'center', gap: 9 }}>
-                    <div><div style={{ fontFamily: "'Space Grotesk'", fontWeight: 600, fontSize: 15, color: '#1a2233' }}>Residencial Aurora</div><div style={{ fontFamily: "'IBM Plex Mono'", fontSize: 9, letterSpacing: '.06em', color: '#8b98ab', textTransform: 'uppercase' }}>Dashboard da obra</div></div>
+                    <div><div style={{ fontFamily: "'Inter'", fontWeight: 600, fontSize: 15, color: '#1a2233' }}>Residencial Aurora</div><div style={{ fontFamily: "'IBM Plex Mono'", fontSize: 9, letterSpacing: '.06em', color: '#8b98ab', textTransform: 'uppercase' }}>Dashboard da obra</div></div>
                     <span style={{ fontFamily: "'IBM Plex Mono'", fontSize: 8, letterSpacing: '.08em', padding: '3px 7px', borderRadius: 5, background: '#eef2ff', color: BLUE }}>DEMO</span>
                   </div>
-                  <div style={{ textAlign: 'right' }}><div style={{ fontFamily: "'IBM Plex Mono'", fontSize: 9, letterSpacing: '.05em', color: '#8b98ab', textTransform: 'uppercase' }}>Término previsto</div><div style={{ fontFamily: "'Space Grotesk'", fontWeight: 600, fontSize: 14, color: BLUE }}>MAI 2027</div></div>
+                  <div style={{ textAlign: 'right' }}><div style={{ fontFamily: "'IBM Plex Mono'", fontSize: 9, letterSpacing: '.05em', color: '#8b98ab', textTransform: 'uppercase' }}>Término previsto</div><div style={{ fontFamily: "'Inter'", fontWeight: 600, fontSize: 14, color: BLUE }}>MAI 2027</div></div>
                 </div>
                 <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1.15fr', gap: 9, marginBottom: 11 }}>
-                  <div style={{ background: '#fff', border: '1px solid #e6e9ef', borderRadius: 10, padding: 11 }}><div style={kpiLabel}>Progresso geral</div><div style={{ fontFamily: "'Space Grotesk'", fontWeight: 700, fontSize: 19, color: BLUE, marginTop: 3 }}>42%</div><div style={{ height: 4, borderRadius: 3, background: '#e9edf3', marginTop: 6 }}><div style={{ height: 4, width: '42%', borderRadius: 3, background: BLUE }} /></div></div>
-                  <div style={{ background: '#fff', border: '1px solid #e6e9ef', borderRadius: 10, padding: 11 }}><div style={kpiLabel}>Escopo</div><div style={{ fontFamily: "'Space Grotesk'", fontWeight: 700, fontSize: 18, color: '#1a2233', marginTop: 3 }}>45 m²</div><div style={{ fontSize: 9.5, color: '#7a8699', marginTop: 2 }}>120 unidades</div></div>
-                  <div style={{ background: '#0f2f66', border: '1px solid #0f2f66', borderRadius: 10, padding: 11, color: '#fff' }}><div style={{ ...kpiLabel, color: '#9dc0ff' }}>Tempo total estimado</div><div style={{ fontFamily: "'Space Grotesk'", fontWeight: 700, fontSize: 20, marginTop: 3 }}>300<span style={{ fontSize: 11, color: '#9dc0ff', fontWeight: 500 }}> dias úteis</span></div><div style={{ fontSize: 9, color: '#9dc0ff', marginTop: 3 }}>420 corridos · 42% completo</div></div>
+                  <div style={{ background: '#fff', border: '1px solid #e6e9ef', borderRadius: 10, padding: 11 }}><div style={kpiLabel}>Progresso geral</div><div style={{ fontFamily: "'Inter'", fontWeight: 700, fontSize: 19, color: BLUE, marginTop: 3 }}>42%</div><div style={{ height: 4, borderRadius: 3, background: '#e9edf3', marginTop: 6 }}><div style={{ height: 4, width: '42%', borderRadius: 3, background: BLUE }} /></div></div>
+                  <div style={{ background: '#fff', border: '1px solid #e6e9ef', borderRadius: 10, padding: 11 }}><div style={kpiLabel}>Escopo</div><div style={{ fontFamily: "'Inter'", fontWeight: 700, fontSize: 18, color: '#1a2233', marginTop: 3 }}>45 m²</div><div style={{ fontSize: 9.5, color: '#7a8699', marginTop: 2 }}>120 unidades</div></div>
+                  <div style={{ background: '#0f2f66', border: '1px solid #0f2f66', borderRadius: 10, padding: 11, color: '#fff' }}><div style={{ ...kpiLabel, color: '#9dc0ff' }}>Tempo total estimado</div><div style={{ fontFamily: "'Inter'", fontWeight: 700, fontSize: 20, marginTop: 3 }}>300<span style={{ fontSize: 11, color: '#9dc0ff', fontWeight: 500 }}> dias úteis</span></div><div style={{ fontSize: 9, color: '#9dc0ff', marginTop: 3 }}>420 corridos · 42% completo</div></div>
                 </div>
                 <div style={{ background: '#fff', border: '1px solid #e6e9ef', borderRadius: 10, padding: '10px 13px', display: 'flex', alignItems: 'center', gap: 16, marginBottom: 11, fontSize: 10.5 }}>
                   <span style={{ fontWeight: 600, color: '#3a4657' }}>36 serviços</span>
                   {[{ c: '#c3ccd8', t: '22 não iniciados' }, { c: BLUE, t: '9 em andamento' }, { c: '#16a34a', t: '5 concluídos' }].map((s) => (<span key={s.t} style={{ display: 'flex', alignItems: 'center', gap: 5, color: '#7a8699' }}><span style={{ width: 7, height: 7, borderRadius: '50%', background: s.c }} />{s.t}</span>))}
                 </div>
                 <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 9 }}>
-                  <div style={{ background: '#fff', border: '1px solid #e6e9ef', borderRadius: 10, padding: 11 }}><div style={kpiLabel}>Avanço médio planejado</div><div style={{ fontFamily: "'Space Grotesk'", fontWeight: 700, fontSize: 18, color: '#1a2233', marginTop: 3 }}>38%</div></div>
-                  <div style={{ background: '#fff', border: '1px solid #e6e9ef', borderRadius: 10, padding: 11 }}><div style={kpiLabel}>Avanço médio realizado</div><div style={{ fontFamily: "'Space Grotesk'", fontWeight: 700, fontSize: 18, color: '#16a34a', marginTop: 3 }}>34%</div></div>
+                  <div style={{ background: '#fff', border: '1px solid #e6e9ef', borderRadius: 10, padding: 11 }}><div style={kpiLabel}>Avanço médio planejado</div><div style={{ fontFamily: "'Inter'", fontWeight: 700, fontSize: 18, color: '#1a2233', marginTop: 3 }}>38%</div></div>
+                  <div style={{ background: '#fff', border: '1px solid #e6e9ef', borderRadius: 10, padding: 11 }}><div style={kpiLabel}>Avanço médio realizado</div><div style={{ fontFamily: "'Inter'", fontWeight: 700, fontSize: 18, color: '#16a34a', marginTop: 3 }}>34%</div></div>
                 </div>
               </div>
             </div>
@@ -329,7 +329,7 @@ export default function Page() {
           </div>
           <div style={{ display: 'flex', justifyContent: 'center', gap: 10, flexWrap: 'wrap', marginBottom: 34 }}>
             {TABS.map((name, i) => (
-              <button key={name} onClick={() => setTab(i)} style={{ padding: '11px 20px', borderRadius: 11, fontFamily: "'IBM Plex Sans'", fontWeight: 600, fontSize: 14.5, cursor: 'pointer', whiteSpace: 'nowrap', transition: 'all .15s', ...(i === tab ? { background: BLUE, color: '#fff', border: `1px solid ${BLUE}`, boxShadow: '0 6px 18px rgba(47,107,255,.3)' } : { background: 'rgba(255,255,255,.03)', color: '#93a4bd', border: '1px solid #223047' }) }}>{name}</button>
+              <button key={name} onClick={() => setTab(i)} style={{ padding: '11px 20px', borderRadius: 11, fontFamily: "'Inter'", fontWeight: 600, fontSize: 14.5, cursor: 'pointer', whiteSpace: 'nowrap', transition: 'all .15s', ...(i === tab ? { background: BLUE, color: '#fff', border: `1px solid ${BLUE}`, boxShadow: '0 6px 18px rgba(47,107,255,.3)' } : { background: 'rgba(255,255,255,.03)', color: '#93a4bd', border: '1px solid #223047' }) }}>{name}</button>
             ))}
           </div>
           {tab === 0 && <ModulePanel mock={<ImplantacaoMock />} title="Implantação" text="A planta do loteamento vira um painel vivo. Clique em cada casa para ver e atualizar o estágio construtivo." feats={featImp} />}
@@ -350,7 +350,7 @@ export default function Page() {
           {groups.map((g) => (
             <div key={g.label} style={{ marginBottom: 34 }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: 11, margin: '0 0 16px' }}>
-                <span style={{ width: 30, height: 30, flex: 'none', borderRadius: 8, background: g.soft, display: 'flex', alignItems: 'center', justifyContent: 'center', color: g.color, fontFamily: "'Space Grotesk'", fontWeight: 700, fontSize: 13 }}>{g.label[0]}</span>
+                <span style={{ width: 30, height: 30, flex: 'none', borderRadius: 8, background: g.soft, display: 'flex', alignItems: 'center', justifyContent: 'center', color: g.color, fontFamily: "'Inter'", fontWeight: 700, fontSize: 13 }}>{g.label[0]}</span>
                 <span style={{ fontFamily: "'IBM Plex Mono'", fontSize: 12.5, letterSpacing: '.1em', textTransform: 'uppercase', color: g.color, fontWeight: 600 }}>{g.label}</span>
                 <span style={{ fontFamily: "'IBM Plex Mono'", fontSize: 11, color: '#4f6180' }}>{g.items.length} módulos</span>
                 <span style={{ flex: 1, height: 1, background: '#17263c' }} />
@@ -358,7 +358,7 @@ export default function Page() {
               <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill,minmax(230px,1fr))', gap: 12 }}>
                 {g.items.map((m) => (
                   <div key={m.name} style={{ display: 'flex', alignItems: 'center', gap: 12, background: '#0f1826', border: '1px solid #1c2b42', borderRadius: 12, padding: '14px 15px' }}>
-                    <span style={{ width: 34, height: 34, flex: 'none', borderRadius: 9, background: g.soft, display: 'flex', alignItems: 'center', justifyContent: 'center', color: g.color, fontFamily: "'Space Grotesk'", fontWeight: 700, fontSize: 13 }}>{m.name[0]}</span>
+                    <span style={{ width: 34, height: 34, flex: 'none', borderRadius: 9, background: g.soft, display: 'flex', alignItems: 'center', justifyContent: 'center', color: g.color, fontFamily: "'Inter'", fontWeight: 700, fontSize: 13 }}>{m.name[0]}</span>
                     <div><div style={{ fontWeight: 600, fontSize: 14.5, color: '#e6edf8' }}>{m.name}</div><div style={{ fontSize: 11.5, color: '#8394ad', marginTop: 2, lineHeight: 1.35 }}>{m.desc}</div></div>
                   </div>
                 ))}
@@ -383,7 +383,7 @@ export default function Page() {
             ].map((s) => (
               <div key={s.n} style={{ ...cardDark, padding: '30px 26px' }}>
                 <div style={{ fontFamily: "'IBM Plex Mono'", fontSize: 13, color: BLUE, marginBottom: 16 }}>{s.n}</div>
-                <h3 style={{ fontFamily: "'Space Grotesk'", fontWeight: 600, fontSize: 21, color: '#eef4ff', margin: '18px 0 8px' }}>{s.t}</h3>
+                <h3 style={{ fontFamily: "'Inter'", fontWeight: 700, fontSize: 21, color: '#eef4ff', margin: '18px 0 8px' }}>{s.t}</h3>
                 <p style={{ fontSize: 15, color: '#93a4bd', lineHeight: 1.6, margin: 0 }}>{s.d}</p>
               </div>
             ))}
@@ -403,13 +403,13 @@ export default function Page() {
         <div className="cw-founder" style={{ maxWidth: 1000, margin: '0 auto', padding: '74px 28px', display: 'grid', gridTemplateColumns: '1fr 1.25fr', gap: 44, alignItems: 'center' }}>
           <div>
             <div style={eyebrow}>Por que existimos</div>
-            <h2 style={{ fontFamily: "'Space Grotesk'", fontWeight: 600, fontSize: 'clamp(24px,4.5vw,31px)', lineHeight: 1.15, letterSpacing: '-.02em', margin: 0, color: '#f2f6ff' }}>Nascemos dentro do canteiro, não do escritório de software.</h2>
+            <h2 style={{ fontFamily: "'Inter'", fontWeight: 700, fontSize: 'clamp(24px,4.5vw,31px)', lineHeight: 1.15, letterSpacing: '-.02em', margin: 0, color: '#f2f6ff' }}>Nascemos dentro do canteiro, não do escritório de software.</h2>
           </div>
           <div>
             <p style={{ fontSize: 17, lineHeight: 1.65, color: '#aab9d0', margin: '0 0 18px' }}>Obra de engenharia se perde entre planilhas soltas, grupos de WhatsApp e um diário que ninguém encontra depois. Quem está no campo anota num lugar; quem decide, olha outro. A informação chega tarde, e cara.</p>
             <p style={{ fontSize: 17, lineHeight: 1.65, color: '#aab9d0', margin: '0 0 22px' }}>O CaseWorks é a nossa resposta: um sistema em que campo e escritório enxergam a mesma obra, ao mesmo tempo. Estamos em fase de implantação, construindo lado a lado com as primeiras construtoras parceiras.</p>
             <div style={{ display: 'flex', alignItems: 'center', gap: 13 }}>
-              <div style={{ width: 44, height: 44, borderRadius: '50%', background: 'linear-gradient(135deg,#2f6bff,#1a3f8f)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontFamily: "'Space Grotesk'", fontWeight: 600, color: '#fff', fontSize: 15 }}>CW</div>
+              <div style={{ width: 44, height: 44, borderRadius: '50%', background: 'linear-gradient(135deg,#2f6bff,#1a3f8f)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontFamily: "'Inter'", fontWeight: 600, color: '#fff', fontSize: 15 }}>CW</div>
               <div><div style={{ fontWeight: 600, color: '#e8eef7', fontSize: 15 }}>Equipe CaseWorks</div><div style={{ fontSize: 12.5, color: '#7f90a9', fontFamily: "'IBM Plex Mono'" }}>Engenharia & Produto</div></div>
             </div>
           </div>
@@ -422,7 +422,7 @@ export default function Page() {
           <div style={{ position: 'relative', overflow: 'hidden', borderRadius: 22, border: '1px solid #24467f', background: 'radial-gradient(120% 140% at 15% 0%,#183463,#0d1a30)', padding: '56px 40px', textAlign: 'center' }}>
             <div style={{ position: 'relative', maxWidth: 560, margin: '0 auto' }}>
               <div style={{ fontFamily: "'IBM Plex Mono'", fontSize: 12, letterSpacing: '.12em', textTransform: 'uppercase', color: '#8fb0ff', marginBottom: 16 }}>Lançamento 2026</div>
-              <h2 style={{ fontFamily: "'Space Grotesk'", fontWeight: 600, fontSize: 'clamp(26px,5vw,36px)', lineHeight: 1.1, letterSpacing: '-.02em', margin: 0, color: '#fff' }}>Garanta seu acesso antecipado</h2>
+              <h2 style={{ fontFamily: "'Inter'", fontWeight: 700, fontSize: 'clamp(26px,5vw,36px)', lineHeight: 1.1, letterSpacing: '-.02em', margin: 0, color: '#fff' }}>Garanta seu acesso antecipado</h2>
               <p style={{ fontSize: 17, color: '#b6c6e0', lineHeight: 1.55, margin: '16px 0 30px' }}>Entre para a lista de espera e seja uma das primeiras construtoras a rodar suas obras no CaseWorks. Sem custo, avisamos assim que abrir.</p>
               {joined ? (
                 <div style={{ display: 'inline-flex', alignItems: 'center', gap: 11, padding: '16px 26px', background: 'rgba(22,163,74,.14)', border: '1px solid rgba(22,163,74,.4)', borderRadius: 12, color: '#7ee2a0', fontWeight: 600, fontSize: 16 }}>
@@ -446,8 +446,8 @@ export default function Page() {
       <footer style={{ borderTop: '1px solid #131f31', background: '#0a0f18' }}>
         <div className="cw-foot" style={{ maxWidth: 1200, margin: '0 auto', padding: '52px 28px 30px', display: 'grid', gridTemplateColumns: '1.6fr 1fr 1fr', gap: 40 }}>
           <div>
-            <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 14 }}><Logo size={24} /><span style={{ fontFamily: "'Space Grotesk'", fontWeight: 600, fontSize: 18, color: '#fff' }}>Case<span style={{ color: BLUE }}>Works</span></span></div>
-            <p style={{ fontFamily: "'Space Grotesk'", fontSize: 14, color: '#5f7091', letterSpacing: '.02em', margin: 0 }}>Building better.</p>
+            <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 14 }}><Logo size={24} /><span style={{ fontFamily: "'Inter'", fontWeight: 600, fontSize: 18, color: '#fff' }}>Case<span style={{ color: BLUE }}>Works</span></span></div>
+            <p style={{ fontFamily: "'Inter'", fontSize: 14, color: '#5f7091', letterSpacing: '.02em', margin: 0 }}>Building better.</p>
           </div>
           <div>
             <div style={{ fontFamily: "'IBM Plex Mono'", fontSize: 11, letterSpacing: '.08em', textTransform: 'uppercase', color: '#5f7091', marginBottom: 16 }}>Produto</div>

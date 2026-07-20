@@ -1,6 +1,6 @@
 *{box-sizing:border-box}
 html,body{margin:0;padding:0}
-body{background:#0b111c;color:#e8eef7;font-family:'IBM Plex Sans',system-ui,sans-serif;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;overflow-x:hidden}
+body{background:#0b111c;color:#e8eef7;font-family:'Inter',system-ui,sans-serif;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;overflow-x:hidden}
 a{color:#7ea2ff;text-decoration:none}
 a:hover{color:#a9c2ff}
 ::selection{background:#2f6bff;color:#fff}
