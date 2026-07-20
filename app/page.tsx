@@ -439,7 +439,7 @@ export default function Page() {
                     <button onClick={() => send('Olá, CaseWorks! Gostaria de entrar na lista de espera.')} style={{ width: '100%', padding: '15px 26px', background: ORANGE, border: 'none', borderRadius: 12, color: '#1a1205', fontWeight: 600, fontSize: 15.5, cursor: 'pointer', boxShadow: '0 8px 24px rgba(240,129,12,.3)' }}>Entrar na lista de espera</button>
                     <button onClick={() => send('Olá, CaseWorks! Gostaria de agendar uma reunião.')} style={{ width: '100%', padding: '15px 26px', background: 'transparent', border: '1px solid #33455f', borderRadius: 12, color: '#dbe5f3', fontWeight: 600, fontSize: 15.5, cursor: 'pointer' }}>Agendar reunião</button>
                   </div>
-                  <div style={{ fontFamily: "'IBM Plex Mono'", fontSize: 11, color: msg ? '#f0a0a0' : '#6f83a6', marginTop: 14 }}>{msg || <>Ou <a href="https://wa.me/5514996124667?text=Ol%C3%A1%2C%20CaseWorks!%20Gostaria%20de%20agendar%20uma%20reuni%C3%A3o." target="_blank" rel="noopener" style={{ color: '#8fb0ff' }}>agende uma reunião</a> com o time</>}</div>
+                  <div style={{ fontFamily: "'IBM Plex Mono'", fontSize: 11, color: msg ? '#f0a0a0' : '#6f83a6', marginTop: 14 }}>{msg || 'Ao enviar, abrimos o WhatsApp já com seus dados.'}</div>
                 </>
               )}
             </div>
