@@ -239,14 +239,12 @@ export default function Page() {
   const [joined, setJoined] = useState(false);
   const [msg, setMsg] = useState('');
 
-  async function join() {
-    if (!name.trim()) { setMsg('Informe seu nome.'); return; }
-    if (!email.includes('@')) { setMsg('Informe um e-mail válido.'); return; }
-    if (!phone.trim()) { setMsg('Informe seu celular.'); return; }
+  async function send(base: string) {
+    if (!name.trim() || !email.includes('@') || !phone.trim()) { setMsg('Preencha nome, e-mail e celular.'); return; }
     setMsg('');
-    if (!supabase) { setJoined(true); return; } // sem Supabase configurado, apenas confirma visualmente
-    const { error } = await supabase.from('waitlist').insert({ name, email, phone });
-    if (error && error.code !== '23505') { setMsg('Não foi possível enviar. Tente novamente.'); return; }
+    if (supabase) { await supabase.from('waitlist').insert({ name, email, phone }); }
+    const txt = base + '\n\nNome: ' + name + '\nE-mail: ' + email + '\nCelular: ' + phone;
+    window.open('https://wa.me/5514996124667?text=' + encodeURIComponent(txt), '_blank');
     setJoined(true);
   }
 
@@ -265,7 +263,7 @@ export default function Page() {
             <a href="#lancamento" style={{ color: '#dbe5f3' }}>Lançamento</a>
           </nav>
           <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
-            <a href="https://wa.me/5514996124667?text=Ol%C3%A1%2C%20CaseWorks!%20Gostaria%20de%20entrar%20na%20lista%20de%20espera" target="_blank" rel="noopener" style={{ padding: '10px 18px', background: ORANGE, borderRadius: 10, color: '#1a1205', fontFamily: "'Inter', sans-serif", fontWeight: 600, fontSize: 14, boxShadow: '0 6px 18px rgba(240,129,12,.24)' }}>Entrar na lista de espera</a>
+            <a href="https://wa.me/5514996124667?text=Ol%C3%A1%2C%20CaseWorks!%20Gostaria%20de%20entrar%20na%20lista%20de%20espera." target="_blank" rel="noopener" style={{ padding: '10px 18px', background: ORANGE, borderRadius: 10, color: '#1a1205', fontFamily: "'Inter', sans-serif", fontWeight: 600, fontSize: 14, boxShadow: '0 6px 18px rgba(240,129,12,.24)' }}>Entrar na lista de espera</a>
             <a href="https://wa.me/5514996124667?text=Ol%C3%A1%2C%20CaseWorks!%20Gostaria%20de%20agendar%20uma%20reuni%C3%A3o." target="_blank" rel="noopener" style={{ padding: '10px 18px', border: '1px solid #33455f', borderRadius: 10, color: '#dbe5f3', fontFamily: "'Inter', sans-serif", fontWeight: 600, fontSize: 14, background: 'rgba(255,255,255,.02)' }}>Agendar reunião</a>
           </div>
         </div>
@@ -283,7 +281,7 @@ export default function Page() {
             <h1 style={{ fontFamily: "'Inter'", fontWeight: 700, fontSize: 'clamp(32px,6.5vw,53px)', lineHeight: 1.05, letterSpacing: '-.02em', margin: '22px 0 0', color: '#f4f8ff', textWrap: 'balance' as CSSProperties['textWrap'] }}>Toda a obra, do canteiro ao caixa, num só sistema.</h1>
             <p style={{ fontSize: 18.5, lineHeight: 1.6, color: '#a3b3cc', margin: '20px 0 0', maxWidth: 520 }}>CaseWorks reúne planejamento, diário de obra, suprimentos e financeiro para que engenheiros, gestores e equipes de campo trabalhem sobre a mesma informação, em tempo real.</p>
             <div style={{ display: 'flex', gap: 14, marginTop: 32, flexWrap: 'wrap' }}>
-              <a href="https://wa.me/5514996124667?text=Ol%C3%A1%2C%20CaseWorks!%20Gostaria%20de%20entrar%20na%20lista%20de%20espera" target="_blank" rel="noopener" style={{ padding: '15px 26px', background: ORANGE, borderRadius: 11, color: '#1a1205', fontWeight: 600, fontSize: 15.5, boxShadow: '0 8px 24px rgba(240,129,12,.28)' }}>Entrar na lista de espera</a>
+              <a href="https://wa.me/5514996124667?text=Ol%C3%A1%2C%20CaseWorks!%20Gostaria%20de%20entrar%20na%20lista%20de%20espera." target="_blank" rel="noopener" style={{ padding: '15px 26px', background: ORANGE, borderRadius: 11, color: '#1a1205', fontWeight: 600, fontSize: 15.5, boxShadow: '0 8px 24px rgba(240,129,12,.28)' }}>Entrar na lista de espera</a>
               <a href="https://wa.me/5514996124667?text=Ol%C3%A1%2C%20CaseWorks!%20Gostaria%20de%20agendar%20uma%20reuni%C3%A3o." target="_blank" rel="noopener" style={{ padding: '15px 24px', border: '1px solid #33455f', borderRadius: 11, color: '#dbe5f3', fontWeight: 600, fontSize: 15.5, background: 'rgba(255,255,255,.02)' }}>Agendar reunião</a>
             </div>
             <div style={{ display: 'flex', alignItems: 'center', gap: 18, marginTop: 26, flexWrap: 'wrap', fontFamily: "'IBM Plex Mono'", fontSize: 11.5, letterSpacing: '.04em', color: '#6f7f98' }}>
@@ -438,7 +436,8 @@ export default function Page() {
                     <input value={name} onChange={(e) => setName(e.target.value)} placeholder="Seu nome" style={{ width: '100%', padding: '15px 18px', borderRadius: 12, border: '1px solid #34558c', background: 'rgba(4,10,20,.5)', color: '#eaf1ff', fontSize: 15.5, outline: 'none' }} />
                     <input value={email} onChange={(e) => setEmail(e.target.value)} placeholder="seu@email.com.br" style={{ width: '100%', padding: '15px 18px', borderRadius: 12, border: '1px solid #34558c', background: 'rgba(4,10,20,.5)', color: '#eaf1ff', fontSize: 15.5, outline: 'none' }} />
                     <input value={phone} onChange={(e) => setPhone(e.target.value)} placeholder="(00) 00000-0000" style={{ width: '100%', padding: '15px 18px', borderRadius: 12, border: '1px solid #34558c', background: 'rgba(4,10,20,.5)', color: '#eaf1ff', fontSize: 15.5, outline: 'none' }} />
-                    <button onClick={join} style={{ width: '100%', padding: '15px 26px', background: ORANGE, border: 'none', borderRadius: 12, color: '#1a1205', fontWeight: 600, fontSize: 15.5, cursor: 'pointer', boxShadow: '0 8px 24px rgba(240,129,12,.3)' }}>Entrar na lista de espera</button>
+                    <button onClick={() => send('Olá, CaseWorks! Gostaria de entrar na lista de espera.')} style={{ width: '100%', padding: '15px 26px', background: ORANGE, border: 'none', borderRadius: 12, color: '#1a1205', fontWeight: 600, fontSize: 15.5, cursor: 'pointer', boxShadow: '0 8px 24px rgba(240,129,12,.3)' }}>Entrar na lista de espera</button>
+                    <button onClick={() => send('Olá, CaseWorks! Gostaria de agendar uma reunião.')} style={{ width: '100%', padding: '15px 26px', background: 'transparent', border: '1px solid #33455f', borderRadius: 12, color: '#dbe5f3', fontWeight: 600, fontSize: 15.5, cursor: 'pointer' }}>Agendar reunião</button>
                   </div>
                   <div style={{ fontFamily: "'IBM Plex Mono'", fontSize: 11, color: msg ? '#f0a0a0' : '#6f83a6', marginTop: 14 }}>{msg || <>Ou <a href="https://wa.me/5514996124667?text=Ol%C3%A1%2C%20CaseWorks!%20Gostaria%20de%20agendar%20uma%20reuni%C3%A3o." target="_blank" rel="noopener" style={{ color: '#8fb0ff' }}>agende uma reunião</a> com o time</>}</div>
                 </>
