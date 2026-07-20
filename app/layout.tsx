@@ -8,7 +8,7 @@ const DESC =
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: 'CaseWorks — Gestão de obras de engenharia',
+    default: 'CaseWorks | Gestão de obras',
     template: '%s · CaseWorks',
   },
   description: DESC,
@@ -38,20 +38,20 @@ export const metadata: Metadata = {
     siteName: 'CaseWorks',
     title: 'CaseWorks — Gestão de obras de engenharia',
     description: DESC,
-    images: [{ url: '/icon.svg', width: 64, height: 64, alt: 'CaseWorks' }],
+    images: [{ url: '/logo.png', width: 512, height: 512, alt: 'CaseWorks' }],
   },
   twitter: {
     card: 'summary',
     title: 'CaseWorks — Gestão de obras de engenharia',
     description: DESC,
-    images: ['/icon.svg'],
+    images: ['/logo.png'],
   },
   robots: {
     index: true,
     follow: true,
     googleBot: { index: true, follow: true, 'max-image-preview': 'large', 'max-snippet': -1 },
   },
-  icons: { icon: '/icon.svg', apple: '/icon.svg' },
+  icons: { icon: '/icon.png', apple: '/icon.png' },
 };
 
 const jsonLd = {
