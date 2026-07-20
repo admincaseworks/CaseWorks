@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import './globals.css';
 
-const SITE_URL = 'https://case-works-ivory.vercel.app';
+const SITE_URL = 'https://caseworks-gestao-de-obras.vercel.app';
 const DESC =
   'CaseWorks é o sistema de gestão de obras de engenharia que reúne planejamento, diário de obra (RDO), cronograma/Gantt, suprimentos e financeiro num só lugar — para engenheiros, gestores e equipes de campo.';
 
@@ -62,7 +62,7 @@ const jsonLd = {
   operatingSystem: 'Web, iOS, Android',
   description: DESC,
   url: SITE_URL,
-  offers: { '@type': 'Offer', category: 'Acesso antecipado' },
+  offers: { '@type': 'Offer', category: 'Demonstração' },
   audience: { '@type': 'Audience', audienceType: 'Engenharia civil, construtoras' },
 };
 
