@@ -233,15 +233,19 @@ function ModulePanel({ mock, title, text, feats }: { mock: React.ReactNode; titl
 
 export default function Page() {
   const [tab, setTab] = useState(0);
+  const [name, setName] = useState('');
   const [email, setEmail] = useState('');
+  const [phone, setPhone] = useState('');
   const [joined, setJoined] = useState(false);
   const [msg, setMsg] = useState('');
 
   async function join() {
+    if (!name.trim()) { setMsg('Informe seu nome.'); return; }
     if (!email.includes('@')) { setMsg('Informe um e-mail válido.'); return; }
+    if (!phone.trim()) { setMsg('Informe seu celular.'); return; }
     setMsg('');
     if (!supabase) { setJoined(true); return; } // sem Supabase configurado, apenas confirma visualmente
-    const { error } = await supabase.from('waitlist').insert({ email });
+    const { error } = await supabase.from('waitlist').insert({ name, email, phone });
     if (error && error.code !== '23505') { setMsg('Não foi possível enviar. Tente novamente.'); return; }
     setJoined(true);
   }
@@ -255,14 +259,14 @@ export default function Page() {
             <Logo />
             <span style={{ fontFamily: "'Inter'", fontWeight: 600, fontSize: 19, color: '#fff' }}>Case<span style={{ color: BLUE }}>Works</span></span>
           </a>
-          <nav className="cw-navlinks" style={{ display: 'flex', alignItems: 'center', gap: 30, fontFamily: "'IBM Plex Mono'", fontSize: 12, letterSpacing: '.06em', textTransform: 'uppercase', color: '#93a4bd' }}>
-            <a href="#modulos" style={{ color: '#93a4bd' }}>Módulos</a>
-            <a href="#como" style={{ color: '#93a4bd' }}>Como funciona</a>
-            <a href="#lancamento" style={{ color: '#93a4bd' }}>Lançamento</a>
+          <nav className="cw-navlinks" style={{ display: 'flex', alignItems: 'center', gap: 30, fontFamily: "'Inter', sans-serif", fontSize: 14, letterSpacing: 'normal', textTransform: 'none', color: '#dbe5f3' }}>
+            <a href="#modulos" style={{ color: '#dbe5f3' }}>Módulos</a>
+            <a href="#como" style={{ color: '#dbe5f3' }}>Como funciona</a>
+            <a href="#lancamento" style={{ color: '#dbe5f3' }}>Lançamento</a>
           </nav>
           <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
-            <a href="#lancamento" style={{ padding: '10px 18px', background: ORANGE, borderRadius: 10, color: '#1a1205', fontWeight: 600, fontSize: 14, boxShadow: '0 6px 18px rgba(240,129,12,.24)' }}>Entrar na lista de espera</a>
-            <a href="#lancamento" style={{ padding: '10px 18px', border: '1px solid #33455f', borderRadius: 10, color: '#dbe5f3', fontWeight: 600, fontSize: 14, background: 'rgba(255,255,255,.02)' }}>Agendar reunião</a>
+            <a href="https://wa.me/5514996124667?text=Ol%C3%A1%2C%20CaseWorks!%20Gostaria%20de%20entrar%20na%20lista%20de%20espera" target="_blank" rel="noopener" style={{ padding: '10px 18px', background: ORANGE, borderRadius: 10, color: '#1a1205', fontFamily: "'Inter', sans-serif", fontWeight: 600, fontSize: 14, boxShadow: '0 6px 18px rgba(240,129,12,.24)' }}>Entrar na lista de espera</a>
+            <a href="https://wa.me/5514996124667?text=Ol%C3%A1%2C%20CaseWorks!%20Gostaria%20de%20agendar%20uma%20reuni%C3%A3o." target="_blank" rel="noopener" style={{ padding: '10px 18px', border: '1px solid #33455f', borderRadius: 10, color: '#dbe5f3', fontFamily: "'Inter', sans-serif", fontWeight: 600, fontSize: 14, background: 'rgba(255,255,255,.02)' }}>Agendar reunião</a>
           </div>
         </div>
       </header>
@@ -279,8 +283,8 @@ export default function Page() {
             <h1 style={{ fontFamily: "'Inter'", fontWeight: 700, fontSize: 'clamp(32px,6.5vw,53px)', lineHeight: 1.05, letterSpacing: '-.02em', margin: '22px 0 0', color: '#f4f8ff', textWrap: 'balance' as CSSProperties['textWrap'] }}>Toda a obra, do canteiro ao caixa, num só sistema.</h1>
             <p style={{ fontSize: 18.5, lineHeight: 1.6, color: '#a3b3cc', margin: '20px 0 0', maxWidth: 520 }}>CaseWorks reúne planejamento, diário de obra, suprimentos e financeiro para que engenheiros, gestores e equipes de campo trabalhem sobre a mesma informação, em tempo real.</p>
             <div style={{ display: 'flex', gap: 14, marginTop: 32, flexWrap: 'wrap' }}>
-              <a href="#lancamento" style={{ padding: '15px 26px', background: ORANGE, borderRadius: 11, color: '#1a1205', fontWeight: 600, fontSize: 15.5, boxShadow: '0 8px 24px rgba(240,129,12,.28)' }}>Entrar na lista de espera</a>
-              <a href="#lancamento" style={{ padding: '15px 24px', border: '1px solid #33455f', borderRadius: 11, color: '#dbe5f3', fontWeight: 600, fontSize: 15.5, background: 'rgba(255,255,255,.02)' }}>Agendar reunião</a>
+              <a href="https://wa.me/5514996124667?text=Ol%C3%A1%2C%20CaseWorks!%20Gostaria%20de%20entrar%20na%20lista%20de%20espera" target="_blank" rel="noopener" style={{ padding: '15px 26px', background: ORANGE, borderRadius: 11, color: '#1a1205', fontWeight: 600, fontSize: 15.5, boxShadow: '0 8px 24px rgba(240,129,12,.28)' }}>Entrar na lista de espera</a>
+              <a href="https://wa.me/5514996124667?text=Ol%C3%A1%2C%20CaseWorks!%20Gostaria%20de%20agendar%20uma%20reuni%C3%A3o." target="_blank" rel="noopener" style={{ padding: '15px 24px', border: '1px solid #33455f', borderRadius: 11, color: '#dbe5f3', fontWeight: 600, fontSize: 15.5, background: 'rgba(255,255,255,.02)' }}>Agendar reunião</a>
             </div>
             <div style={{ display: 'flex', alignItems: 'center', gap: 18, marginTop: 26, flexWrap: 'wrap', fontFamily: "'IBM Plex Mono'", fontSize: 11.5, letterSpacing: '.04em', color: '#6f7f98' }}>
               {['Feito por engenheiros', 'Dados seguros', 'Campo + escritório'].map((t) => (<span key={t} style={{ display: 'flex', alignItems: 'center', gap: 7 }}><svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M20 6 9 17l-5-5" stroke={BLUE} strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" /></svg>{t}</span>))}
@@ -430,11 +434,13 @@ export default function Page() {
                 </div>
               ) : (
                 <>
-                  <div style={{ display: 'flex', gap: 11, maxWidth: 480, margin: '0 auto', flexWrap: 'wrap' }}>
-                    <input value={email} onChange={(e) => setEmail(e.target.value)} placeholder="seu@email.com.br" style={{ flex: 1, minWidth: 220, padding: '15px 18px', borderRadius: 12, border: '1px solid #34558c', background: 'rgba(4,10,20,.5)', color: '#eaf1ff', fontSize: 15.5, outline: 'none' }} />
-                    <button onClick={join} style={{ padding: '15px 26px', background: ORANGE, border: 'none', borderRadius: 12, color: '#1a1205', fontWeight: 600, fontSize: 15.5, cursor: 'pointer', boxShadow: '0 8px 24px rgba(240,129,12,.3)' }}>Entrar na lista</button>
+                  <div style={{ display: 'flex', flexDirection: 'column', gap: 11, maxWidth: 440, margin: '0 auto' }}>
+                    <input value={name} onChange={(e) => setName(e.target.value)} placeholder="Seu nome" style={{ width: '100%', padding: '15px 18px', borderRadius: 12, border: '1px solid #34558c', background: 'rgba(4,10,20,.5)', color: '#eaf1ff', fontSize: 15.5, outline: 'none' }} />
+                    <input value={email} onChange={(e) => setEmail(e.target.value)} placeholder="seu@email.com.br" style={{ width: '100%', padding: '15px 18px', borderRadius: 12, border: '1px solid #34558c', background: 'rgba(4,10,20,.5)', color: '#eaf1ff', fontSize: 15.5, outline: 'none' }} />
+                    <input value={phone} onChange={(e) => setPhone(e.target.value)} placeholder="(00) 00000-0000" style={{ width: '100%', padding: '15px 18px', borderRadius: 12, border: '1px solid #34558c', background: 'rgba(4,10,20,.5)', color: '#eaf1ff', fontSize: 15.5, outline: 'none' }} />
+                    <button onClick={join} style={{ width: '100%', padding: '15px 26px', background: ORANGE, border: 'none', borderRadius: 12, color: '#1a1205', fontWeight: 600, fontSize: 15.5, cursor: 'pointer', boxShadow: '0 8px 24px rgba(240,129,12,.3)' }}>Entrar na lista de espera</button>
                   </div>
-                  <div style={{ fontFamily: "'IBM Plex Mono'", fontSize: 11, color: msg ? '#f0a0a0' : '#6f83a6', marginTop: 14 }}>{msg || <>Ou <a href="#top" style={{ color: '#8fb0ff' }}>agende uma reunião</a> com o time</>}</div>
+                  <div style={{ fontFamily: "'IBM Plex Mono'", fontSize: 11, color: msg ? '#f0a0a0' : '#6f83a6', marginTop: 14 }}>{msg || <>Ou <a href="https://wa.me/5514996124667?text=Ol%C3%A1%2C%20CaseWorks!%20Gostaria%20de%20agendar%20uma%20reuni%C3%A3o." target="_blank" rel="noopener" style={{ color: '#8fb0ff' }}>agende uma reunião</a> com o time</>}</div>
                 </>
               )}
             </div>
@@ -447,7 +453,12 @@ export default function Page() {
         <div className="cw-foot" style={{ maxWidth: 1200, margin: '0 auto', padding: '52px 28px 30px', display: 'grid', gridTemplateColumns: '1.6fr 1fr 1fr', gap: 40 }}>
           <div>
             <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 14 }}><Logo size={24} /><span style={{ fontFamily: "'Inter'", fontWeight: 600, fontSize: 18, color: '#fff' }}>Case<span style={{ color: BLUE }}>Works</span></span></div>
-            <p style={{ fontFamily: "'Inter'", fontSize: 14, color: '#5f7091', letterSpacing: '.02em', margin: 0 }}>Building better.</p>
+            <p style={{ fontFamily: "'Inter'", fontSize: 14, color: '#5f7091', letterSpacing: '.02em', margin: '0 0 16px' }}>Building better.</p>
+            <div style={{ display: 'flex', gap: 10 }}>
+              <a href="mailto:admin.caseworks@gmail.com" aria-label="E-mail" style={{ display: 'flex', width: 38, height: 38, borderRadius: 10, border: '1px solid #26344b', background: 'rgba(255,255,255,.02)', alignItems: 'center', justifyContent: 'center' }}><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><rect x="3" y="5" width="18" height="14" rx="2" stroke="#dbe5f3" strokeWidth="1.7" /><path d="m3.5 6.5 8.5 6 8.5-6" stroke="#dbe5f3" strokeWidth="1.7" /></svg></a>
+              <a href="https://www.instagram.com/gabrielocasemiro?igsh=MTIwaWg2MXowejNqZA==" target="_blank" rel="noopener" aria-label="Instagram" style={{ display: 'flex', width: 38, height: 38, borderRadius: 10, border: '1px solid #26344b', background: 'rgba(255,255,255,.02)', alignItems: 'center', justifyContent: 'center' }}><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="18" height="18" rx="5" stroke="#dbe5f3" strokeWidth="1.7" /><circle cx="12" cy="12" r="4" stroke="#dbe5f3" strokeWidth="1.7" /><circle cx="17.5" cy="6.5" r="1.2" fill="#dbe5f3" /></svg></a>
+              <a href="https://wa.me/5514996124667?text=Ol%C3%A1!%20Tenho%20interesse%20no%20CaseWorks" target="_blank" rel="noopener" aria-label="WhatsApp" style={{ display: 'flex', width: 38, height: 38, borderRadius: 10, border: '1px solid #26344b', background: 'rgba(255,255,255,.02)', alignItems: 'center', justifyContent: 'center' }}><svg width="18" height="18" viewBox="0 0 24 24" fill="#dbe5f3"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38c1.45.79 3.08 1.21 4.79 1.21h.01c5.46 0 9.91-4.45 9.91-9.91C21.96 6.45 17.5 2 12.04 2zm5.8 14.16c-.24.68-1.4 1.3-1.94 1.38-.5.07-1.13.1-1.82-.11-.42-.13-.96-.31-1.65-.61-2.9-1.25-4.79-4.17-4.94-4.36-.14-.19-1.18-1.57-1.18-2.99 0-1.42.75-2.12 1.01-2.41.27-.29.58-.36.77-.36.19 0 .39 0 .56.01.18.01.42-.07.66.5.24.59.82 2.01.89 2.16.07.14.12.31.02.5-.09.19-.14.31-.28.48-.14.17-.29.37-.42.5-.14.14-.28.29-.12.57.16.28.72 1.18 1.54 1.91 1.06.94 1.95 1.24 2.23 1.38.28.14.44.12.61-.07.17-.19.7-.82.89-1.1.19-.28.38-.23.64-.14.26.09 1.67.79 1.95.93.28.14.47.21.54.33.07.12.07.68-.17 1.36z" /></svg></a>
+            </div>
           </div>
           <div>
             <div style={{ fontFamily: "'IBM Plex Mono'", fontSize: 11, letterSpacing: '.08em', textTransform: 'uppercase', color: '#5f7091', marginBottom: 16 }}>Produto</div>
@@ -463,6 +474,10 @@ export default function Page() {
           <span>Criado e desenvolvido por CaseWorks</span>
         </div>
       </footer>
+
+      <a href="https://wa.me/5514996124667?text=Ol%C3%A1!%20Tenho%20interesse%20no%20CaseWorks" target="_blank" rel="noopener" aria-label="Falar no WhatsApp" style={{ position: 'fixed', right: 22, bottom: 22, zIndex: 60, width: 58, height: 58, borderRadius: '50%', background: '#25d366', display: 'flex', alignItems: 'center', justifyContent: 'center', boxShadow: '0 12px 30px rgba(37,211,102,.45)' }}>
+        <svg width="30" height="30" viewBox="0 0 24 24" fill="#fff"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38c1.45.79 3.08 1.21 4.79 1.21h.01c5.46 0 9.91-4.45 9.91-9.91C21.96 6.45 17.5 2 12.04 2zm5.8 14.16c-.24.68-1.4 1.3-1.94 1.38-.5.07-1.13.1-1.82-.11-.42-.13-.96-.31-1.65-.61-2.9-1.25-4.79-4.17-4.94-4.36-.14-.19-1.18-1.57-1.18-2.99 0-1.42.75-2.12 1.01-2.41.27-.29.58-.36.77-.36.19 0 .39 0 .56.01.18.01.42-.07.66.5.24.59.82 2.01.89 2.16.07.14.12.31.02.5-.09.19-.14.31-.28.48-.14.17-.29.37-.42.5-.14.14-.28.29-.12.57.16.28.72 1.18 1.54 1.91 1.06.94 1.95 1.24 2.23 1.38.28.14.44.12.61-.07.17-.19.7-.82.89-1.1.19-.28.38-.23.64-.14.26.09 1.67.79 1.95.93.28.14.47.21.54.33.07.12.07.68-.17 1.36z" /></svg>
+      </a>
     </div>
   );
 }

@@ -1,7 +1,9 @@
 -- Rode este SQL no Supabase (SQL Editor) para criar a tabela da lista de espera.
 create table if not exists public.waitlist (
   id uuid primary key default gen_random_uuid(),
+  name text,
   email text not null unique,
+  phone text,
   created_at timestamptz not null default now()
 );
 
