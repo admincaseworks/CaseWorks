@@ -320,7 +320,7 @@ export default function Page() {
         <div className="cw-sec" style={{ maxWidth: 1120, margin: '0 auto', padding: '78px 28px' }}>
           <div style={{ maxWidth: 720 }}>
             <div style={eyebrow}>Quem somos</div>
-            <h2 style={h2}>Uma vida de experiência transformada em software</h2>
+            <h2 style={h2}>Uma empresa de engenharia que virou software</h2>
             <p style={{ fontSize: 17.5, lineHeight: 1.65, color: '#aab9d0', margin: '20px 0 0' }}>Unimos mais de 30 anos de experiência na gestão e execução de obras a quase 20 anos de desenvolvimento de software. Conhecemos os desafios do canteiro porque vivemos essa realidade, e por isso construímos uma plataforma que conecta obra e escritório em tempo real.</p>
           </div>
           <div className="cw-mv" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 18, marginTop: 44 }}>

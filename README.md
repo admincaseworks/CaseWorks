@@ -16,14 +16,32 @@ npm run dev                         # http://localhost:3000
 
 O formulário de lista de espera insere o e-mail em `public.waitlist`. Sem as env vars o site funciona normalmente, mas o envio mostra um aviso de configuração.
 
-## Deploy (Vercel + Git)
+## Deploy estático em VPS Ubuntu (sem Node no servidor)
+O projeto está configurado com `output: 'export'` (`next.config.mjs`): o `build` gera um site 100% estático na pasta `out/`. Você builda **na sua máquina** e sobe só os arquivos prontos — o servidor roda apenas Nginx.
+
 ```bash
-git init && git add -A && git commit -m "feat: site CaseWorks"
-git branch -M main
-git remote add origin git@github.com:<org>/<repo>.git
-git push -u origin main
+# 1. Na sua máquina
+npm install
+cp .env.local.example .env.local   # credenciais Supabase (embutidas no build)
+npm run build                       # gera a pasta ./out com HTML/CSS/JS estáticos
+
+# 2. Enviar a pasta out/ para o servidor (ex.: via scp ou rsync)
+rsync -avz out/ usuario@ip_do_servidor:/var/www/caseworks/
 ```
-Depois: importe o repositório na Vercel, cadastre as env vars `NEXT_PUBLIC_SUPABASE_URL` e `NEXT_PUBLIC_SUPABASE_ANON_KEY` (Project → Settings → Environment Variables). Cada `git push` na `main` dispara deploy automático.
+
+No servidor Ubuntu, o Nginx serve `/var/www/caseworks` como site estático:
+```nginx
+server {
+  listen 80;
+  server_name seu-dominio.com.br;
+  root /var/www/caseworks;
+  index index.html;
+  location / { try_files $uri $uri/ $uri.html =404; }
+}
+```
+Depois ative HTTPS com `sudo certbot --nginx`. Como as credenciais `NEXT_PUBLIC_*` são embutidas no build, sempre que trocá-las é preciso rodar `npm run build` de novo e reenviar `out/`.
+
+> As chaves `NEXT_PUBLIC_SUPABASE_*` são públicas por natureza (usadas no browser). A proteção dos dados fica na **RLS** do Supabase, não no sigilo da anon key.
 
 ## Estrutura
 - `app/layout.tsx` — HTML base + fontes (Space Grotesk / IBM Plex Sans / IBM Plex Mono).
