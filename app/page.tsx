@@ -320,7 +320,7 @@ export default function Page() {
         <div className="cw-sec" style={{ maxWidth: 1120, margin: '0 auto', padding: '78px 28px' }}>
           <div style={{ maxWidth: 720 }}>
             <div style={eyebrow}>Quem somos</div>
-            <h2 style={h2}>Uma vida de experiência transformada em software</h2>
+            <h2 style={h2}>Uma empresa de engenharia que virou software</h2>
             <p style={{ fontSize: 17.5, lineHeight: 1.65, color: '#aab9d0', margin: '20px 0 0' }}>Unimos mais de 30 anos de experiência na gestão e execução de obras a quase 20 anos de desenvolvimento de software. Conhecemos os desafios do canteiro porque vivemos essa realidade, e por isso construímos uma plataforma que conecta obra e escritório em tempo real.</p>
           </div>
           <div className="cw-mv" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 18, marginTop: 44 }}>
@@ -425,7 +425,7 @@ export default function Page() {
           </div>
           <div style={{ display: 'flex', justifyContent: 'center', gap: 10, flexWrap: 'wrap', marginBottom: 34 }}>
             {TABS.map((name, i) => (
-              <button key={name} onClick={() => setTab(i)} style={{ padding: '11px 20px', borderRadius: 11, fontFamily: "'Inter'", fontWeight: 600, fontSize: 14.5, cursor: 'pointer', whiteSpace: 'nowrap', transition: 'all .15s', ...(i === tab ? { background: BLUE, color: '#fff', border: `1px solid ${BLUE}`, boxShadow: '0 6px 18px rgba(47,107,255,.3)' } : { background: 'rgba(255,255,255,.03)', color: '#93a4bd', border: '1px solid #223047' }) }}>{name}</button>
+              <button key={name} onClick={() => setTab(i)} style={{ padding: '11px 20px', borderRadius: 11, fontFamily: "'Inter'", fontWeight: 600, fontSize: 14.5, cursor: 'pointer', whiteSpace: 'nowrap', transition: 'all .15s', position: 'relative', zIndex: 2, touchAction: 'manipulation', WebkitTapHighlightColor: 'transparent', ...(i === tab ? { background: BLUE, color: '#fff', border: `1px solid ${BLUE}`, boxShadow: '0 6px 18px rgba(47,107,255,.3)' } : { background: 'rgba(255,255,255,.03)', color: '#93a4bd', border: '1px solid #223047' }) }}>{name}</button>
             ))}
           </div>
           {tab === 0 && <ModulePanel mock={<ImplantacaoMock />} title="Implantação" text="A planta do loteamento vira um painel vivo. Clique em cada casa para ver e atualizar o estágio construtivo." feats={featImp} />}
